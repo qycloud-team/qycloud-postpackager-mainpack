@@ -25,7 +25,11 @@ module.exports = function (ret, settings, conf, opt) {
 
                 var moduleConfig = ret.map.res[moduleUri];
                 var pkgConfig = ret.map.pkg[moduleConfig.pkg];
-                moduleConfig.uri = pkgConfig.uri;
+                if (!moduleConfig || !pkgConfig) {
+                    fis.log.warning("map.json don't have pkg info for subpath: " + subpath);
+                } else {
+                    moduleConfig.uri = pkgConfig.uri;
+                }
             }
         }
     });
