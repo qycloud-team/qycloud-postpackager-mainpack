@@ -24,7 +24,7 @@ module.exports = function (ret, settings, conf, opt) {
                     moduleName = m[2];
 
                 var moduleConfig = ret.map.res[moduleUri];
-                var pkgConfig = ret.map.pkg[moduleConfig.pkg];
+                var pkgConfig = moduleConfig.pkg && ret.map.pkg[moduleConfig.pkg];
                 if (!moduleConfig || !pkgConfig) {
                     fis.log.warning("map.json don't have pkg info for subpath: " + subpath);
                 } else {
